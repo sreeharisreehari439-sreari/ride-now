@@ -1,0 +1,45 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+}
+
+.detail-container {
+    display: flex;
+    padding: 50px;
+    gap: 40px;
+}
+
+.image-section img {
+    width: 450px;
+    border-radius: 10px;
+}
+
+.info-section {
+    max-width: 500px;
+}
+
+.price {
+    font-size: 28px;
+    color: #2563eb;
+    font-weight: bold;
+}
+
+.specs p {
+    margin: 5px 0;
+}
+
+.btn-book {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.btn-book:hover {
+    background: #1e40af;
+}

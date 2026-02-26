@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - Orders</title>
+    <link rel="stylesheet" href="{% static 'css/admin_orders.css' %}">
+</head>
+<body>
+
+<div class="admin-container">
+
+    <h1>Manage Orders</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Bike</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Ordered Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.user.username }}</td>
+                <td>{{ order.bike.title }}</td>
+                <td>₹{{ order.total_price }}</td>
+                <td class="status {{ order.status }}">
+                    {{ order.status }}
+                </td>
+                <td>{{ order.ordered_at|date:"d M Y" }}</td>
+                <td>
+
+                    {% if order.status == 'pending' %}
+                        <a href="{% url 'approve_order' order.id %}" class="btn approve">
+                            Approve
+                        </a>
+                        <a href="{% url 'reject_order' order.id %}" class="btn reject">
+                            Reject
+                        </a>
+                    {% else %}
+                        -
+                    {% endif %}
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Orders</title>
+    <link rel="stylesheet" href="{% static 'css/my_orders.css' %}">
+</head>
+<body>
+
+<div class="orders-container">
+
+    <h1>My Orders</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Bike</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Ordered On</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.bike.title }}</td>
+                <td>₹{{ order.total_price }}</td>
+                <td class="status {{ order.status }}">
+                    {{ order.status }}
+                </td>
+                <td>{{ order.ordered_at|date:"d M Y" }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4">No Orders Found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

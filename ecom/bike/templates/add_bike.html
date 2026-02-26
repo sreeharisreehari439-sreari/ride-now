@@ -1,0 +1,235 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Add Bike</title>
+
+<link rel="stylesheet"
+href="{% static 'css/style.css' %}">
+
+</head>
+
+
+<body>
+
+<h2>Add Bike Product</h2>
+
+
+<form method="POST"
+enctype="multipart/form-data">
+
+{% csrf_token %}
+
+
+<!-- ===================== -->
+<!-- BASIC DETAILS -->
+<!-- ===================== -->
+
+<h3>Basic Information</h3>
+
+
+<label>Bike Title</label>
+
+<input type="text"
+name="title"
+placeholder="Example: Royal Enfield Classic 350"
+required>
+
+
+
+<label>Brand</label>
+
+<input type="text"
+name="brand"
+placeholder="Example: Royal Enfield / Yamaha / Honda"
+required>
+
+
+
+<label>Category</label>
+
+<select name="category" required>
+
+<option value="">
+
+Select Bike Category
+
+</option>
+
+{% for cat in categories %}
+
+<option value="{{ cat.id }}">
+
+{{ cat.name }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+
+
+<label>Description</label>
+
+<textarea
+name="description"
+placeholder="Describe bike condition, accessories, service history etc..."
+rows="4"
+required></textarea>
+
+
+
+<!-- ===================== -->
+<!-- PRICE -->
+<!-- ===================== -->
+
+<h3>Pricing</h3>
+
+
+<label>Price (₹)</label>
+
+<input type="number"
+name="price"
+placeholder="Example: 150000"
+required>
+
+
+
+<label>Condition</label>
+
+<select name="condition">
+
+<option value="new">
+
+New
+
+</option>
+
+<option value="used">
+
+Used
+
+</option>
+
+</select>
+
+
+
+<!-- ===================== -->
+<!-- SPECIFICATIONS -->
+<!-- ===================== -->
+
+<h3>Specifications</h3>
+
+
+<label>Manufacturing Year</label>
+
+<input type="number"
+name="year"
+placeholder="Example: 2022"
+required>
+
+
+
+<label>Mileage (KM Driven)</label>
+
+<input type="number"
+name="mileage"
+placeholder="Example: 12000"
+required>
+
+
+
+<label>Engine Capacity</label>
+
+<input type="text"
+name="engine_capacity"
+placeholder="Example: 150cc / 350cc"
+required>
+
+
+
+<label>Fuel Type</label>
+
+<select name="fuel_type">
+
+<option value="petrol">
+
+Petrol
+
+</option>
+
+<option value="electric">
+
+Electric
+
+</option>
+
+<option value="diesel">
+
+Diesel
+
+</option>
+
+</select>
+
+
+
+<label>Color</label>
+
+<input type="text"
+name="color"
+placeholder="Example: Black / Red / Blue">
+
+<!-- ===================== -->
+<!-- IMAGES -->
+<!-- ===================== -->
+
+<h3>Bike Images</h3>
+
+
+<label>Main Image (Thumbnail)</label>
+
+<input type="file"
+name="main_image"
+required>
+
+
+
+
+
+
+
+<!-- ===================== -->
+<!-- STOCK -->
+<!-- ===================== -->
+
+<h3>Stock</h3>
+
+
+<label>Available Quantity</label>
+
+<input type="number"
+name="stock"
+placeholder="Example: 1"
+value="1"
+min="1">
+
+
+
+<button type="submit">
+
+Add Bike
+
+</button>
+
+
+</form>
+
+
+</body>
+</html>

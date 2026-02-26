@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Bikes</title>
+    <link rel="stylesheet" href="{% static 'css/all_bikes.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Explore Our Bikes</h2>
+
+    <div class="bike-grid">
+        {% for bike in bikes %}
+        <div class="bike-card">
+
+            <div class="bike-image">
+                <img src="{{ bike.image.url }}" alt="{{ bike.name }}">
+            </div>
+
+            <div class="bike-details">
+                <h3>{{ bike.name }}</h3>
+                <p class="category">{{ bike.category.name }}</p>
+                <p class="price">₹ {{ bike.price }} / day</p>
+
+                <a href="{% url 'bike_detail' bike.id %}" class="view-btn">
+                    View Details
+                </a>
+            </div>
+
+        </div>
+        {% empty %}
+            <p>No Bikes Available</p>
+        {% endfor %}
+    </div>
+
+</div>
+
+</body>
+</html>

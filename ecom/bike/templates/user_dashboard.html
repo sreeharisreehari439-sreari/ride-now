@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/user_dashboard.css' %}">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2 class="logo">BikeStore</h2>
+        <ul>
+            <li><a href="{% url 'user_dashboard' %}" class="active">Dashboard</a></li>
+            <li><a href="#">My Profile</a></li>
+            <li><a href="{% url 'my_orders' %}">My Orders</a></li>
+            <li><a href="#">Wishlist</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Welcome, {{ request.user.first_name }} {{ request.user.last_name }}</h1>
+            <p>{{ request.user.email }}</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Total Orders</h3>
+                <p>{{ total_orders }}</p>
+            </div>
+            <div class="stat-card">
+                <h3>Wishlist</h3>
+                <p>{{ wishlist_count }}</p>
+            </div>
+            <div class="stat-card">
+                <h3>Pending Orders</h3>
+                <p>{{ pending_orders }}</p>
+            </div>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter-section">
+            <h2>Available Bikes</h2>
+            <select id="categoryFilter">
+                <option value="all">All Categories</option>
+                {% for category in categories %}
+                <option value="{{ category.name }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Bike Listing -->
+        <div class="bike-grid" id="bikeGrid">
+            {% for bike in bikes %}
+            <div class="bike-card" data-category="{{ bike.category.name }}">
+                <img src="{{ bike.main_image.url }}" alt="{{ bike.title }}">
+                <h3>{{ bike.title }}</h3>
+                <p class="brand">{{ bike.brand }}</p>
+                <p class="price">₹{{ bike.price }}</p>
+                <a href="{% url 'book_now' bike.id %}" class="btn">Book Now</a>
+            </div>
+            {% empty %}
+            <p>No bikes available.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Recent Orders -->
+        <div class="orders">
+            <h2>Recent Orders</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bike</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.bike.title }}</td>
+                        <td>₹{{ order.bike.price }}</td>
+                        <td class="status {{ order.status }}">{{ order.status }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="3">No Orders Yet</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+</div>
+
+<script>
+    const filter = document.getElementById("categoryFilter");
+    const bikes = document.querySelectorAll(".bike-card");
+
+    filter.addEventListener("change", function () {
+        const selected = this.value;
+
+        bikes.forEach(bike => {
+            const category = bike.getAttribute("data-category");
+            if (selected === "all" || category === selected) {
+                bike.style.display = "block";
+            } else {
+                bike.style.display = "none";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

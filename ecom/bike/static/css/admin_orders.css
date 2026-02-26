@@ -1,0 +1,58 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+    padding: 40px;
+}
+
+.admin-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #111827;
+    color: white;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.status.pending { color: orange; }
+.status.approved { color: green; }
+.status.rejected { color: red; }
+
+.btn {
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 2px;
+}
+
+.approve {
+    background: green;
+    color: white;
+}
+
+.reject {
+    background: red;
+    color: white;
+}

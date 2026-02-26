@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ bike.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/bike_details.css' %}">
+</head>
+<body>
+
+<div class="detail-container">
+
+    <div class="image-section">
+        <img src="{{ bike.main_image.url }}" alt="{{ bike.title }}">
+    </div>
+
+    <div class="info-section">
+        <h1>{{ bike.title }}</h1>
+        <p class="brand">{{ bike.brand }}</p>
+        <p class="price">₹{{ bike.price }}</p>
+
+        <div class="specs">
+            <p><strong>Year:</strong> {{ bike.year }}</p>
+            <p><strong>Mileage:</strong> {{ bike.mileage }} KM</p>
+            <p><strong>Fuel:</strong> {{ bike.fuel_type }}</p>
+            <p><strong>Condition:</strong> {{ bike.condition }}</p>
+            <p><strong>Location:</strong> {{ bike.location }}</p>
+        </div>
+
+        <p class="description">{{ bike.description }}</p>
+
+        <a href="{% url 'book_now' bike.id %}" class="btn-book">
+            Book Now
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

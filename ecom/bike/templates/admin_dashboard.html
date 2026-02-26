@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Bike Seller Admin Dashboard</title>
+
+<link rel="stylesheet"
+href="{% static 'css/admin_dashboard.css' %}">
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h2>🏍 Bike Admin</h2>
+
+<ul>
+
+<li class="active">Dashboard</li>
+
+<li>All Bikes</li>
+
+<li>
+<a href="{% url 'add_category' %}">
+Add Category
+</a>
+</li>
+
+<li>
+<a href="{% url 'add_bike' %}">
+Add Bike
+</a>
+</li>
+<li>
+    <a href="{% url 'admin_orders' %}">
+        Orders
+    </a>
+</li>
+
+
+<li>
+
+<a href="{% url 'logout' %}">
+Logout
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+
+
+<!-- Main Content -->
+
+<div class="main-content">
+
+
+<header>
+
+<h1>Admin Dashboard</h1>
+
+<a href="{% url 'add_bike' %}">
+
+<button class="add-btn">
+
++ Add New Bike
+
+</button>
+
+</a>
+
+</header>
+
+
+
+<!-- Dashboard Cards -->
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Total Bikes</h3>
+
+<p>120</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Orders</h3>
+
+<p>45</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Customers</h3>
+
+<p>80</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Bike Table -->
+
+<div class="table-section">
+
+<h2>Bike Listings</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Bike</th>
+<th>Brand</th>
+<th>Price</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Classic 350</td>
+<td>Royal Enfield</td>
+<td>₹2,10,000</td>
+<td class="available">Available</td>
+
+<td>
+
+<button class="edit">
+
+Edit
+
+</button>
+
+<button class="delete">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>Interceptor</td>
+<td>Bajaj</td>
+<td>₹1,50,000</td>
+<td class="sold">Sold</td>
+
+<td>
+
+<button class="edit">
+
+Edit
+
+</button>
+
+<button class="delete">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

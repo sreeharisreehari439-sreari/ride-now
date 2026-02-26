@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Book Bike</title>
+
+<link rel="stylesheet"
+href="{% static 'css/booking.css' %}">
+
+</head>
+
+<body>
+
+<div class="booking-container">
+
+<h1>Bike Booking</h1>
+
+
+<!-- Bike Details -->
+
+<div class="bike-card">
+
+<img src="{{bike.image.url}}"
+width="300">
+
+
+<h2>
+
+{{bike.title}}
+
+</h2>
+
+
+<h3>
+
+Price :
+
+₹{{bike.price}}
+
+</h3>
+
+<p>
+
+{{bike.description}}
+
+</p>
+
+</div>
+
+
+<!-- Booking Form -->
+
+<form method="POST">
+
+{% csrf_token %}
+
+<h3>Book This Bike</h3>
+
+
+<label>
+
+Quantity
+
+</label>
+
+<input type="number"
+
+name="quantity"
+
+value="1"
+
+min="1"
+
+required>
+
+
+<br><br>
+
+
+<button type="submit">
+
+Confirm Booking
+
+</button>
+
+
+</form>
+
+
+<a href="{% url 'user_dashboard' %}">
+
+Back to Dashboard
+
+</a>
+
+
+</div>
+
+</body>
+
+</html>

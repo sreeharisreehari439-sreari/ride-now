@@ -1,0 +1,126 @@
+:root {
+    --accent: #d90429;
+    --dark-bg: #2b2d42;
+    --text-main: #2b2d42;
+    --text-muted: #8d99ae;
+    --light-bg: #edf2f4;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+    color: var(--text-main);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo { font-size: 1.5rem; font-weight: 900; letter-spacing: -1px; }
+.logo span { color: var(--accent); }
+
+nav ul { display: flex; list-style: none; gap: 2rem; }
+nav a { text-decoration: none; color: var(--text-main); font-weight: 500; }
+
+/* Hero Section */
+.hero {
+    height: 70vh;
+    background: linear-gradient(to right, rgba(245, 243, 243, 0.8), transparent), url('hero-bike.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    color: rgb(206, 116, 13);
+}
+
+.hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1rem; }
+
+.cta-main {
+    background: var(--accent);
+    color: white;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+/* Shop Layout */
+.container { padding: 4rem 5%; }
+.product-layout { display: grid; grid-template-columns: 250px 1fr; gap: 3rem; }
+
+.sidebar h3 { margin-bottom: 1.5rem; text-transform: uppercase; font-size: 0.9rem; }
+.filter-group { margin-bottom: 2rem; }
+.filter-group label { display: block; margin-bottom: 0.5rem; color: var(--text-muted); cursor: pointer; }
+
+/* Grid & Cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; }
+
+.bike-card {
+    background: rgb(255, 255, 255);
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.bike-card:hover { transform: translateY(-10px); }
+
+.bike-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: contain;
+    background: var(--light-bg);
+    border-radius: 8px;
+}
+
+.card-details { padding: 1.5rem 0; }
+.category { color: var(--accent); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+.price { font-weight: 800; font-size: 1.2rem; margin: 0.5rem 0; }
+
+.add-to-cart {
+    width: 100%;
+    padding: 0.8rem;
+    background: transparent;
+    border: 2px solid var(--dark-bg);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-to-cart:hover {
+    background: var(--dark-bg);
+    color: white;
+}
+.hero {
+    height: 90vh;
+    background: url("../images/cafe_racer.jpg") no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    padding-left: 10%;
+    position: relative;
+    color: white;
+}
+
+/* Dark overlay for better text visibility */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+}

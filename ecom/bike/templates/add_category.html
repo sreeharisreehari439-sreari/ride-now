@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Category</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Add Bike Category</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Category Name</label>
+        <input type="text"
+               name="name"
+               placeholder="Example: Sports Bike / Cruiser / Scooter"
+               required>
+
+        <label>Description</label>
+        <textarea
+                name="description"
+                placeholder="Optional category description"
+                rows="3"></textarea>
+
+        <div class="buttons">
+            <button type="submit" class="save">
+                Add Category
+            </button>
+        </div>
+    </form>
+
+    <!-- SHOW EXISTING CATEGORY -->
+    <h3>Available Categories</h3>
+
+    <ul>
+        {% for cat in categories %}
+            <li>
+                <strong>{{ cat.name }}</strong>
+                {% if cat.description %}
+                    — {{ cat.description }}
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>No Categories Added Yet</li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+</body>
+</html>

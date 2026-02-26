@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bike | Premium Bike Marketplace</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo"><span>bike</span></div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">home</a></li>
+                <li><a href="{% url 'login' %}">login</a></li>
+                <li><a href="{% url 'register' %}">register</a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </nav>
+        
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Engineered for the <br>Uncharted Path.</h1>
+            <p>Discover the new 2026 Trailblazer Series.</p>
+            <a href="#shop" class="cta-main">Shop Collection</a>
+        </div>
+        <!-- TEMPORARY TEST IMAGE -->
+            <img src="{% static 'images/cafe_racer.jpg' %}" width="300">
+    </section>
+
+    <main class="container">
+        <section id="shop" class="product-layout">
+            <aside class="sidebar">
+                
+                
+            </aside>
+
+            <section class="grid">
+                <div class="bike-card">
+                    <div class="badge-new">powerd by sreari</div>
+                    
+                    
+                    </div>
+                </div>
+                </section>
+        </section>
+    </main>
+
+</body>
+</html>

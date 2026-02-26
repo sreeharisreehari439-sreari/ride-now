@@ -1,0 +1,37 @@
+{% load static %}
+
+<link rel="stylesheet"
+href="{% static 'css/style.css' %}">
+
+
+<h1>Available Bikes</h1>
+
+<div class="bike-container">
+
+{% for bike in bikes %}
+
+<div class="bike-card">
+
+<a href="{% url 'bike_detail' bike.id %}">
+
+<img src="{{ bike.main_image.url }}">
+
+<h3>
+
+{{ bike.title }}
+
+</h3>
+
+</a>
+
+<p class="price">
+
+₹ {{ bike.price }}
+
+</p>
+
+</div>
+
+{% endfor %}
+
+</div>
